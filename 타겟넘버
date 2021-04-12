@@ -1,0 +1,33 @@
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+import java.util.Stack;
+
+
+public class Main {
+	static int result=0;
+		
+		
+	public static void DFS(int node, int prevSum,int[] numbers, int target) {		
+		if(node>=numbers.length) {
+			if(prevSum==target)result++;
+			return;
+		}
+		//현재노드 계산
+		DFS(node+1,prevSum+numbers[node],numbers,target);
+		DFS(node+1,prevSum-numbers[node],numbers,target);
+	}
+	 public static int solution(int[] numbers, int target) {
+		 //dfs- 모두방문
+		 	DFS(0,0,numbers,target);
+	        return result;
+	    }
+	
+	public static void main(String[] args) throws Exception{
+		// TODO Auto-generated method stub
+		int[] n ={1, 1, 1, 1, 1};
+		System.out.println(solution(n, 3));
+			
+	}	
+	
+}
